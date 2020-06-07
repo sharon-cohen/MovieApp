@@ -1,4 +1,4 @@
-#Movie app
+Movie app
 
 
 A new Flutter application.
