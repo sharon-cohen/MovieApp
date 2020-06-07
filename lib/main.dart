@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'home.dart';
-import 'movie_json.dart';
+import 'welcom_page.dart';
 import 'QR.dart';
 import 'movie-after_QR.dart';
 
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      initialRoute: WelcomPage.id,
+      initialRoute:WelcomPage.id,
       routes: {
         MoviesApp.id: (context) => MoviesApp(),
         WelcomPage.id: (context) => WelcomPage(),

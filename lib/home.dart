@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import 'moveinfo.dart';
 import 'movie_sql.dart';
 import'QR.dart' ;
-
+import 'dart:async';
 const API_KEY = 'ae3a2294';
 const API_URL = "http://www.omdbapi.com/?apikey=";
 
 class MoviesApp extends StatelessWidget {
   static const String id = 'Moviepage';
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,7 +40,9 @@ Future<MovieInfo> getMovie(movieId) async {
 }
 
 class MoviesAppHome extends StatefulWidget {
-  MoviesAppHome({Key key, }) : super(key: key);
+  static const String id = 'MoviesAppHome';
+
+  MoviesAppHome({Key key}) : super(key: key);
   @override
   MoviesAppHomeState createState() => MoviesAppHomeState();
 }
@@ -47,10 +50,9 @@ class MoviesAppHome extends StatefulWidget {
 class MoviesAppHomeState extends State<MoviesAppHome> {
   final searchTextController = new TextEditingController();
   final DismissDirection _dismissDirection = DismissDirection.vertical;
-  final MovieBloc movieBloc = MovieBloc();
-  String searchText = "";
-
+   MovieBloc movieBloc = MovieBloc();
   @override
+
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Colors.black12,
@@ -68,12 +70,11 @@ class MoviesAppHomeState extends State<MoviesAppHome> {
                       size: 28,
                     ),
                     onPressed: () {
-                      //just re-pull UI for testing purposes
-                      movieBloc.getMovie();
+                     movieBloc.getMovie();
                     }),
                 IconButton(
                   icon: Icon(Icons.camera,color: Colors.white,),
-                  tooltip: 'Search Movies',
+                  tooltip: 'CAMERA',
                   onPressed: () {
                     setState(() {
                       Navigator.push(

@@ -11,7 +11,6 @@ class Movie {
   String rating;
   String genre;
   String poster;
-
   Movie({this.id, this.rating,this.year,this.title,this.genre,this.poster});
   factory Movie.fromDatabaseJson(Map<String, dynamic> data) => Movie(
     id: data['id'],
@@ -28,6 +27,7 @@ class Movie {
     "genre":this.genre,
     "poster":this.poster,
     "rating":this.rating,
+
   };
 }
 final moveTABLE = 'Movie';
@@ -119,6 +119,8 @@ class MovieDao {
   }
 
   //Update Todo record
+
+
 
   Future<int> updateMovie(Movie movie) async {
     final db = await dbProvider.database;

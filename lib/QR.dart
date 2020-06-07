@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'movie_json.dart';
+import 'welcom_page.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 import 'moveinfo.dart';
 import 'movie-after_QR.dart';
@@ -8,8 +8,8 @@ import 'package:flutter/scheduler.dart';
 import 'movie_sql.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-const API_KEY = '<YOUR KEY>';
+import 'welcom_page.dart';
+const API_KEY = 'ae3a2294';
 const API_URL = "http://www.omdbapi.com/?apikey=";
 const flash_on = "FLASH ON";
 const flash_off = "FLASH OFF";
@@ -240,12 +240,6 @@ Widget getMovesWidget(MovieBloc movieBloc ,DismissDirection _dismissDirection) {
   return StreamBuilder(
     stream: movieBloc.todos,
     builder: (BuildContext context, AsyncSnapshot<List<Movie>> snapshot) {
-    if(!snapshot.hasData){
-
-      Navigator.pushNamed(context,WelcomPage.id
-      );
-
-    }
       return getMovieCardWidget(snapshot,movieBloc,_dismissDirection,context);
     },
   );
@@ -464,7 +458,7 @@ Widget getMovieCardWidget(AsyncSnapshot<List<Movie>> snapshot,MovieBloc movieBlo
 
 
 Widget loadingData(MovieBloc movieBloc) {
-  //pull todos again
+
   movieBloc.getMovie();
   return Container(
     child: Center(
@@ -479,22 +473,40 @@ Widget loadingData(MovieBloc movieBloc) {
     ),
   );
 }
+class noMovieMessageWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
+        color: Colors.white,
+        elevation: 10,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: <Widget>[
+            const ListTile(
+              leading: Icon(Icons.album, size: 70),
+              title: Text('No movie', style: TextStyle(color: Colors.black)),
+              subtitle: Text('go to scan movie', style: TextStyle(color: Colors.black)),
+            ),
+            // ignore: deprecated_member_use
 
-Widget noMovieMessageWidget() {
-  return Container(
-    child: Text(
-      "Start adding Todo...",
-      style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500),
-    ),
-  );
+          ],
+        ),
+      ),
+    );;
+  }
 }
+
+
+
+
 
 dispose(MovieBloc movieBloc) {
   /*close the stream in order
     to avoid memory leaks
     */
   movieBloc.dispose();
-}
-_isFlashOn(String current) {
-  return flash_on == current;
 }
