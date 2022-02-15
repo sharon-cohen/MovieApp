@@ -1,6 +1,6 @@
 Movie app
 
-[online documentation](ht<img width="206" alt="Capture1" src="https://user-images.githubusercontent.com/62427228/154121218-d3c7465f-bc78-4221-82fe-cdcbae715a36.PNG">
+<img width="206" alt="Capture1" src="https://user-images.githubusercontent.com/62427228/154121218-d3c7465f-bc78-4221-82fe-cdcbae715a36.PNG">
 
 <img width="602" alt="Capture3PNG" src="https://user-images.githubusercontent.com/62427228/154122102-0d017eda-10f0-4fc7-9015-041240164b27.PNG">
 
